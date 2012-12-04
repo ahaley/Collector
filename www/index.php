@@ -7,14 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     die();
 }
 
-$loader = new SplClassLoader('Doctrine', __DIR__ . '/../vendor');
-$loader->register();
+//$loader = new SplClassLoader('Doctrine', __DIR__ . '/../vendor');
+//$loader->register();
+
+require_once '../vendor/autoload.php';
 
 $collectedValues = array(
     'name', 'email'
 );
 
-$config = \Doctrine\DBAL\Configuration();
+$config = new \Doctrine\DBAL\Configuration();
 $params = array(
     'dbname' => getenv('COLLECTOR_DB'),
     'user' => getenv('MYSQL_USER'),
@@ -23,7 +25,7 @@ $params = array(
     'driver' => 'pdo_mysql'
 );
 
-$conn = DriverManager::getConnection($params, $config);
+$conn = \Doctrine\DBAL\DriverManager::getConnection($params, $config);
 
 $user_info = array();
 foreach ($collectedValues as $value) {
