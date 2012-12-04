@@ -7,9 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     die();
 }
 
-//$loader = new SplClassLoader('Doctrine', __DIR__ . '/../vendor');
-//$loader->register();
-
 require_once '../vendor/autoload.php';
 
 $collectedValues = array(
