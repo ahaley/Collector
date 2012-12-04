@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="collector" default="build">
+
+    <target name="build" depends="lint">
+    </target>
+
+    <target name="database">
+        <exec command="db/reload.sh" checkreturn="true" />
+    </target>
+
+    <target name="lint">
+        <phplint>
+            <fileset dir="www">
+                <include name="**/*.php"/>
+            </fileset>
+        </phplint>
+    </target>
+</project>
