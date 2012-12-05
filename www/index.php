@@ -2,12 +2,14 @@
 
 require_once '../SplClassLoader.php';
 
+$loader = new SplClassLoader('Doctrine', '/usr/lib/php/pear');
+$loader->register();
+
+
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     require_once 'form.html';
     die();
 }
-
-require_once '../vendor/autoload.php';
 
 $collectedValues = array(
     'name', 'email'
@@ -15,9 +17,9 @@ $collectedValues = array(
 
 $config = new \Doctrine\DBAL\Configuration();
 $params = array(
-    'dbname' => getenv('COLLECTOR_DB'),
-    'user' => getenv('MYSQL_USER'),
-    'password' => getenv('MYSQL_PASSWORD'),
+    'dbname' => 'cieditions_collector',
+    'user' => 'mysql',
+    'password' => 'mysql',
     'host' => 'localhost',
     'driver' => 'pdo_mysql'
 );
