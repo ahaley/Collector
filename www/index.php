@@ -1,10 +1,6 @@
 <?php
 
-require_once '../SplClassLoader.php';
-
-$loader = new SplClassLoader('Doctrine', '/usr/lib/php/pear');
-$loader->register();
-
+require_once '../vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     require_once 'form.html';
